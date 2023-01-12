@@ -40,6 +40,22 @@ userSchema.statics.signup = async (email, password) => {
     return user;
 }
 
+userSchema.statics.login = async (email, password) => {
+    const user = this.findOne({email});
+ 
+    if (!user) {
+        throw Error('Incorrect email');
+    }
+
+    const match = bcrypt.compare(password, user.password);
+
+    if (!match) {
+        throw Error('Incorrect password');
+    }
+
+    return user;
+}
+
 const User = mongoose.model('User', userSchema);
 
 export default User;
