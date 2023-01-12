@@ -1,4 +1,4 @@
-import userSchema from "../models/userModel";
+import User from "../models/userModel";
 
 export const loginUser = async (req, res) => {
     res.json({message: 'login user'});
