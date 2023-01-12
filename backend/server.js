@@ -1,8 +1,10 @@
-require('dotenv').config()
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-const express = require('express')
-const mongoose = require('mongoose')
-const workoutRoutes = require('./routes/workouts')
+import express from 'express';
+import mongoose from 'mongoose';
+import workoutRoutes from './routes/workouts';
+import userRoutes from './routes/users';
 
 // express app
 const app = express()
@@ -16,7 +18,8 @@ app.use((req, res, next) => {
 })
 
 // routes
-app.use('/api/workouts', workoutRoutes)
+app.use('/workouts', workoutRoutes);
+app.use('/user', userRoutes);
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)
