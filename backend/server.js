@@ -3,8 +3,8 @@ dotenv.config();
 
 import express from 'express';
 import mongoose from 'mongoose';
-import workoutRoutes from './routes/workouts';
-import userRoutes from './routes/users';
+import workoutRoutes from './routes/workouts.js';
+import userRoutes from './routes/users.js';
 
 // express app
 const app = express()
