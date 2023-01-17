@@ -14,9 +14,11 @@ export const signupUser = async (req, res) => {
 
         const token = createToken(user._id); 
 
+        console.log(user);
         res.status(200).json({email, token});
     } catch (error) {
-        res.status(400).json({error});
+        console.log(error);
+        res.status(400).json({error: error.message});
     }
 }
 
@@ -31,6 +33,6 @@ export const loginUser = async (req, res) => {
 
         res.status(200).json({email, token});
     } catch (error) {
-        res.status(400).json({error});
+        res.status(400).json({error: error.message});
     }
 }
