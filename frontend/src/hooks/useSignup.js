@@ -8,6 +8,8 @@ export const useSignup =  () => {
 
     const signup = async (email, password) => {
 
+    setLoading(true);
+
     const response = await fetch('http://localhost:4000/user/signup', {
         method: 'POST',
         headers: {'Content-Type' : 'application/json'},
@@ -18,6 +20,7 @@ export const useSignup =  () => {
     if (!response.ok) {
         setLoading(false);
         setError(json.error);
+        //console.log(json);
     }
 
     if (response.ok) {
