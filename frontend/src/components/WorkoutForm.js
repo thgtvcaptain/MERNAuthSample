@@ -19,7 +19,7 @@ const WorkoutForm = () => {
       setError('You must be logged in')
       return
     }
-    console.log(user.token);
+    //console.log(user.token);
     const workout = {title, load, reps}
 
     const response = await fetch('/workouts', {
