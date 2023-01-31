@@ -4,13 +4,16 @@ import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
 // components
 import WorkoutDetails from '../components/WorkoutDetails'
 import WorkoutForm from '../components/WorkoutForm'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const Home = () => {
   const {workouts, dispatch} = useWorkoutsContext()
-
+  const {user} = useAuthContext();
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch('http://localhost:4000/workouts')
+      const response = await fetch('http://localhost:4000/workouts', {
+        headers: {'Authorization': `Bearer ${user.token}`},
+      })
       const json = await response.json()
 
       if (response.ok) {
