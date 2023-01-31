@@ -10,6 +10,9 @@ const Home = () => {
   const {workouts, dispatch} = useWorkoutsContext()
   const {user} = useAuthContext();
   useEffect(() => {
+
+    if(!user) return;
+
     const fetchWorkouts = async () => {
       const response = await fetch('http://localhost:4000/workouts', {
         headers: {'Authorization': `Bearer ${user.token}`},
