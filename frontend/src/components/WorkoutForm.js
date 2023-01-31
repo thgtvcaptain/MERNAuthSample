@@ -15,9 +15,14 @@ const WorkoutForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    if (!user) {
+      setError('You must be logged in')
+      return
+    }
+    console.log(user.token);
     const workout = {title, load, reps}
 
-    const response = await fetch('/api/workouts', {
+    const response = await fetch('/workouts', {
       method: 'POST',
       body: JSON.stringify(workout),
       headers: {
